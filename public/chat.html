@@ -4,66 +4,82 @@
     <!-- Metadata -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/style.css" />
     <!-- Tab title -->
     <title>Nexus</title>
   </head>
   <body>
-    <!-- Header -->
-    <header id="chat-header">
-      <!-- Logo -->
-      <h1>Nexus</h1>
-      <!-- Exit room button -->
-      <a href="index.html" class="btn">Exit room</a>
-    </header>
-    <!-- Sidebar -->
-    <div id="chat-sidebar">
-      <!-- Room heading -->
-      <h3>Room</h3>
-      <h2 id="room-name">Foxtrot</h2>
-      <!-- List of current room members -->
-      <h3>Members</h3>
-      <ul id="users">
-        <li>Hassan</li>
-        <li>Hussain</li>
-        <li>Abdus-Samad</li>
-        <li>Yaseen</li>
-      </ul>
+    <!-- Container -->
+    <div id="chat-container">
+      <!-- Header -->
+      <header id="chat-header">
+        <!-- Logo -->
+        <h1>Nexus</h1>
+        <!-- Leave room button -->
+        <a href="index.html" class="btn">Leave</a>
+      </header>
+      <!-- Main chat section -->
+      <main id="chat-main">
+        <!-- Sidebar -->
+        <div id="chat-sidebar">
+          <!-- Room heading -->
+          <h3>Room</h3>
+          <h2 id="room-name">Debate</h2>
+          <!-- List of current room members -->
+          <h3>Members</h3>
+          <ul id="users">
+            <li>Afif</li>
+            <li>Mohammed</li>
+          </ul>
+        </div>
+        <!-- Messages -->
+        <div id="chat-messages">
+          <div class="message">
+            <p class="meta">Afif <span>12:28 am</span></p>
+            <p class="text">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Officiis, in?
+            </p>
+          </div>
+          <div class="message">
+            <p class="meta">Mohammed <span>12:29 am</span></p>
+            <p class="text">
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta
+              quas eius quo neque similique commodi quibusdam qui excepturi
+              eveniet tempore odit asperiores fugiat, ad assumenda laboriosam
+              voluptates ut aut deserunt?
+            </p>
+          </div>
+          <div class="message">
+            <p class="meta">Afif <span>12:30 am</span></p>
+            <p class="text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum.
+            </p>
+          </div>
+          <div class="message">
+            <p class="meta">Mohammed <span>12:32 am</span></p>
+            <p class="text">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet aut
+              reiciendis enim ipsum, libero laborum.
+            </p>
+          </div>
+        </div>
+      </main>
+      <!-- Container -->
+      <div id="chat-form-container">
+        <form id="chat-form">
+          <!-- Message box -->
+          <input
+            id="msg"
+            type="text"
+            placeholder="Message"
+            autocomplete="off"
+          />
+          <!-- Send button -->
+          <button class="btn">Send</button>
+        </form>
+      </div>
     </div>
-    <!-- Messages -->
-    <div id="chat-messages">
-      <div class="message">
-        <p class="meta">Hassan <span>1:20 pm</span></p>
-        <p class="text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat,
-          magni!
-        </p>
-      </div>
-      <div class="message">
-        <p class="meta">Hussain <span>1:20 pm</span></p>
-        <p class="text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid culpa
-          recusandae hic.
-        </p>
-      </div>
-      <div class="message">
-        <p class="meta">Abdus-Samad <span>1:21 pm</span></p>
-        <p class="text">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae,
-          sapiente!
-        </p>
-      </div>
-      <div class="message">
-        <p class="meta">Yaseen <span>1:22 pm</span></p>
-        <p class="text">
-          Lorem ipsum dolor sit amet.
-        </p>
-      </div>
-    </div>
-    <form id="chat-form">
-      <!-- Message box -->
-      <input id="msg" type="text" placeholder="Enter message" />
-      <!-- Send button -->
-      <button class="btn">Send</button>
-    </form>
   </body>
 </html>
