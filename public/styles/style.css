@@ -56,11 +56,15 @@ a {
   text-align: center;
   padding: 20px;
   background-color: var(--blue);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 #join-main {
   padding: 30px 40px;
   background-color: var(--light-blue);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 #join-main p {
@@ -106,6 +110,8 @@ a {
 
 #chat-header {
   background-color: var(--blue);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   padding: 15px 20px;
   display: flex;
   align-items: center;
@@ -150,9 +156,24 @@ a {
   background-color: #fff;
 }
 
+.message-container {
+  display: flex;
+}
+
+.sender {
+  justify-content: flex-end;
+}
+
+.recipient {
+  justify-content: flex-start;
+}
+
 .message {
   padding: 10px;
   margin-bottom: 10px;
+  border-radius: 5px;
+  min-width: 20%;
+  max-width: 50%;
 }
 
 .sender .message {
@@ -177,6 +198,8 @@ a {
 #chat-form-container {
   padding: 20px;
   background-color: var(--blue);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 #chat-form-container form {
