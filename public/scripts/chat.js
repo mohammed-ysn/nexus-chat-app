@@ -37,6 +37,9 @@ socket.on('roomUpdate', ({ room, users }) => {
 socket.on('message', (message) => {
   // Output new message to DOM
   outputMessage(message);
+
+  // Scroll down to the new message
+  chatMessages.scrollTop = chatMessages.scrollHeight;
 });
 
 // Add event listener to send button
