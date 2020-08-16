@@ -17,12 +17,12 @@
     "url": "https://github.com/mohammed-ysn/nexus-chat-app/issues"
   },
   "homepage": "https://github.com/mohammed-ysn/nexus-chat-app#readme",
-  "devDependencies": {
-    "nodemon": "^2.0.4"
-  },
   "dependencies": {
     "express": "^4.17.1",
     "moment": "^2.27.0",
     "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
