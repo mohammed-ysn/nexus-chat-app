@@ -1,7 +1,7 @@
 {
   "name": "nexus-chat-app",
   "version": "1.0.0",
-  "description": "A chat application built with Node.js",
+  "description": "A chat application built Node.js and Express",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
