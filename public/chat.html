@@ -25,46 +25,13 @@
         <div id="chat-sidebar">
           <!-- Room heading -->
           <h3>Room</h3>
-          <h2 id="room-name">Debate</h2>
+          <h2 id="room-name"></h2>
           <!-- List of current room members -->
           <h3>Members</h3>
-          <ul id="users">
-            <li>Afif</li>
-            <li>Mohammed</li>
-          </ul>
+          <ul id="users"></ul>
         </div>
         <!-- Messages -->
-        <div id="chat-messages">
-          <div class="message">
-            <p class="meta">Afif <span>12:28 am</span></p>
-            <p class="text">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Officiis, in?
-            </p>
-          </div>
-          <div class="message">
-            <p class="meta">Mohammed <span>12:29 am</span></p>
-            <p class="text">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta
-              quas eius quo neque similique commodi quibusdam qui excepturi
-              eveniet tempore odit asperiores fugiat, ad assumenda laboriosam
-              voluptates ut aut deserunt?
-            </p>
-          </div>
-          <div class="message">
-            <p class="meta">Afif <span>12:30 am</span></p>
-            <p class="text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum.
-            </p>
-          </div>
-          <div class="message">
-            <p class="meta">Mohammed <span>12:32 am</span></p>
-            <p class="text">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet aut
-              reiciendis enim ipsum, libero laborum.
-            </p>
-          </div>
-        </div>
+        <div id="chat-messages"></div>
       </main>
       <!-- Container -->
       <div id="chat-form-container">
@@ -81,5 +48,15 @@
         </form>
       </div>
     </div>
+    <!-- Query strings library -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.min.js"
+      integrity="sha512-BHtomM5XDcUy7tDNcrcX1Eh0RogdWiMdXl3wJcKB3PFekXb3l5aDzymaTher61u6vEZySnoC/SAj2Y/p918Y3w=="
+      crossorigin="anonymous"
+    ></script>
+    <!-- Socket.IO -->
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- JavaScript -->
+    <script src="scripts/chat.js"></script>
   </body>
 </html>
