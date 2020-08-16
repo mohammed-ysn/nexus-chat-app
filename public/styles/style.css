@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 :root {
-  --purple: #52307c;
-  --light-purple: #663a82;
-  --grey: #f5f5f5;
+  --blue: #006ad3;
+  --light-blue: #3388dc;
+  --dark-blue: #00152a;
+  --green: #00ba5c;
 }
 
 * {
@@ -15,7 +16,7 @@
 body {
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
-  background-color: var(--grey);
+  background-color: var(--dark-blue);
   color: #fff;
   margin: 20px;
 }
@@ -37,7 +38,7 @@ a {
   font-family: 'Poppins', sans-serif;
   cursor: pointer;
   padding: 5px 15px;
-  color: var(--purple);
+  color: var(--blue);
   border: 0;
   font-size: 18px;
   background-color: #fff;
@@ -54,12 +55,12 @@ a {
 #join-header {
   text-align: center;
   padding: 20px;
-  background-color: var(--purple);
+  background-color: var(--blue);
 }
 
 #join-main {
   padding: 30px 40px;
-  background-color: var(--light-purple);
+  background-color: var(--light-blue);
 }
 
 #join-main p {
@@ -104,7 +105,7 @@ a {
 }
 
 #chat-header {
-  background-color: var(--purple);
+  background-color: var(--blue);
   padding: 15px 20px;
   display: flex;
   align-items: center;
@@ -118,13 +119,13 @@ a {
 }
 
 #chat-sidebar {
-  background-color: var(--light-purple);
+  background-color: var(--light-blue);
   padding: 20px 20px 60px;
 }
 
 #chat-sidebar h2 {
   font-size: 20px;
-  background-color: var(--purple);
+  background-color: var(--blue);
   padding: 10px;
   margin-bottom: 20px;
 }
@@ -134,7 +135,7 @@ a {
 }
 
 #chat-sidebar ul {
-  background-color: var(--purple);
+  background-color: var(--blue);
   padding: 5px 10px;
 }
 
@@ -152,7 +153,14 @@ a {
 .message {
   padding: 10px;
   margin-bottom: 10px;
-  background-color: var(--purple);
+}
+
+.sender .message {
+  background-color: var(--green);
+}
+
+.recipient .message {
+  background-color: var(--blue);
 }
 
 .message .meta {
@@ -168,7 +176,7 @@ a {
 
 #chat-form-container {
   padding: 20px;
-  background-color: var(--purple);
+  background-color: var(--blue);
 }
 
 #chat-form-container form {
