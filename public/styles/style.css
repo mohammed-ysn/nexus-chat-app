@@ -45,6 +45,11 @@ a {
   transition: 0.2s;
 }
 
+.btn:hover {
+  background-color: var(--dark-blue);
+  color: #fff;
+}
+
 /* Join page */
 
 #join-container {
@@ -174,6 +179,16 @@ a {
   border-radius: 5px;
   min-width: 20%;
   max-width: 50%;
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .sender .message {
