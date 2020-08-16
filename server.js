@@ -13,6 +13,14 @@ const socketio = require('socket.io');
 // Import format message function
 const formatMessage = require('./utils/messages');
 
+// Import user functions
+const {
+  addUser,
+  removeUser,
+  getUser,
+  getUsersInRoom,
+} = require('./utils/users');
+
 // Create express app
 const app = express();
 
@@ -25,57 +33,94 @@ const io = socketio(server);
 // Store chat bot name
 const botName = '[BOT] Nexoid';
 
-// Store usernames
-const users = [];
-
 // Set frontend root directory to the public folder
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Receive new connection from client
 io.on('connection', (socket) => {
-  // Receive join event from client
-  socket.on('join', (username) => {
-    // Add new user's name to users list
-    users.push(username);
+  // Receive join room event from client
+  socket.on('joinRoom', ({ username, room }) => {
+    // Add new user to users list
+    addUser(socket.id, username, room);
 
-    // Emit join message to all users
-    io.emit(
+    // Add new user to their selected room
+    socket.join(room);
+
+    // Emit join message to all users in the room
+    io.to(room).emit(
       'message',
       formatMessage({
         username: botName,
-        text: `${username} joined the chat.`,
+        text: `${username} joined the room.`,
+        isSender: false,
       })
     );
 
-    // Emit room update event to all users
-    io.emit('roomUpdate', users);
+    // Emit room update event to all users in the room
+    io.to(room).emit('roomUpdate', {
+      room,
+      users: getUsersInRoom(room),
+    });
   });
 
   // Receive new chat message event from client
   socket.on('chatMessage', (message) => {
-    // Emit message to all users
-    io.emit(
-      'message',
-      formatMessage({
-        username: 'User',
-        text: message,
-      })
-    );
+    // Get sender
+    const user = getUser(socket.id);
+
+    // Check if sender is connected to the web socket
+    if (user) {
+      // Store sender's username and room
+      const { username, room } = user;
+
+      // Emit message to the sender
+      io.to(socket.id).emit(
+        'message',
+        formatMessage({
+          username,
+          text: message,
+          isSender: true,
+        })
+      );
+
+      // Emit message to the rest of the users in the room
+      socket.to(room).emit(
+        'message',
+        formatMessage({
+          username,
+          text: message,
+          isSender: false,
+        })
+      );
+    }
   });
 
   // Receive disconnection event from client
   socket.on('disconnect', () => {
-    // Emit disconnect message to all users
-    io.emit(
-      'message',
-      formatMessage({
-        username: botName,
-        text: 'User left the chat.',
-      })
-    );
+    // Remove disconnected user from users list
+    const user = removeUser(socket.id);
 
-    // Emit room update event to all users
-    io.emit('roomUpdate', users);
+    // Check if disconnected user was removed correctly
+    if (user) {
+      // Store disconnected user's username and room
+      const { username, room } = user;
+
+      // Emit disconnect message to the users in the room
+      io.to(room).emit(
+        'message',
+        formatMessage({
+          username: botName,
+          text: `${username} left the room.`,
+          isSender: false,
+        })
+      );
+
+      // Emit room update event to all users in the room
+      io.to(room).emit('roomUpdate', {
+        room,
+        users: getUsersInRoom(room),
+      });
+    }
   });
 });
 

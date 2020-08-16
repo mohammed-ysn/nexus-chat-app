@@ -15,31 +15,29 @@ const { username, room } = Qs.parse(location.search, {
   ignoreQueryPrefix: true,
 });
 
-// Update room name
-roomName.innerText = room;
+// Set tab title to the room name
+document.title = room;
 
 // Create a web socket
 const socket = io();
 
-// Emit join event to server
-socket.emit('join', username);
+// Emit join room event to server
+socket.emit('joinRoom', { username, room });
 
 // Receive room update event from server
-socket.on('roomUpdate', (users) => {
-  // Clear current members
-  usersList.innerHTML = '';
+socket.on('roomUpdate', ({ room, users }) => {
+  // Update room name on DOM
+  updateRoomName(room);
 
-  // Iterate through every user
-  users.forEach((user) => {
-    // Add the username to the members list
-    const member = document.createElement('li');
-    member.innerText = user;
-    usersList.appendChild(member);
-  });
+  // Update list of room members on DOM
+  updateRoomUsers(users);
 });
 
 // Receive message event from server
-socket.on('message', outputMessage);
+socket.on('message', (message) => {
+  // Output new message to DOM
+  outputMessage(message);
+});
 
 // Add event listener to send button
 chatForm.addEventListener('submit', (event) => {
@@ -54,21 +52,52 @@ chatForm.addEventListener('submit', (event) => {
 
   // Clear text in the message bar
   event.target.msg.value = '';
+
+  // Focus on the message bar so user can type
+  event.target.msg.focus();
 });
 
 // Output new message to DOM
-function outputMessage({ username, text, time }) {
+function outputMessage({ username, text, time, isSender }) {
+  // Create a container for the new message box
+  const messageContainer = document.createElement('div');
+
   // Create a message box
   const messageBox = document.createElement('div');
+
+  // Add class to the message container
+  messageContainer.classList.add('message-container');
+
+  // Add sender or recipient class to the message container
+  messageContainer.classList.add(`${isSender ? 'sender' : 'recipient'}`);
 
   // Add message class to the message box
   messageBox.classList.add('message');
 
-  // Create message child nodes
+  // Add message sender, time and text to the message box
   messageBox.innerHTML = `
-  <p class="meta">${username} <span>${time}</span></p>
+  <p class="meta">${isSender ? 'You' : username} <span>${time}</span></p>
   <p class="text">${text}</p>`;
 
+  // Append the message box to the message container
+  messageContainer.appendChild(messageBox);
+
   // Output the message to the chat
-  chatMessages.appendChild(messageBox);
+  chatMessages.appendChild(messageContainer);
+}
+
+// Update room name on DOM
+function updateRoomName(room) {
+  roomName.innerText = room;
+}
+
+// Update list of room members on DOM
+function updateRoomUsers(users) {
+  // Iterate through the users in the room and output a list item with their name
+  usersList.innerHTML = `
+    ${users
+      .map((user) => {
+        return `<li>${user.username}</li>`;
+      })
+      .join('')}`;
 }
