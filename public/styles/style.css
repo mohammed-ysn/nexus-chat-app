@@ -227,3 +227,17 @@ a {
   height: 40px;
   width: 100%;
 }
+
+@media (max-width: 700px) {
+  #chat-main {
+    display: block;
+  }
+
+  #chat-sidebar {
+    display: none;
+  }
+
+  .message {
+    max-width: 90%;
+  }
+}
