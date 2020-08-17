@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
   --blue: #006ad3;
@@ -40,9 +40,10 @@ a {
   padding: 5px 15px;
   color: var(--blue);
   border: 0;
-  font-size: 18px;
+  font-size: 1.1rem;
   background-color: #fff;
   transition: 0.2s;
+  font-weight: 500;
 }
 
 .btn:hover {
@@ -83,18 +84,18 @@ a {
 #join-main label {
   display: block;
   margin-bottom: 5px;
-  font-size: 18px;
+  font-size: 1.1rem;
 }
 
 #join-main input[type='text'] {
-  font-size: 16px;
+  font-size: 1rem;
   padding: 5px;
   height: 40px;
   width: 100%;
 }
 
 #join-main select {
-  font-size: 16px;
+  font-size: 1rem;
   padding: 5px;
   height: 40px;
   width: 100%;
@@ -135,13 +136,14 @@ a {
 }
 
 #chat-sidebar h2 {
-  font-size: 20px;
+  font-size: 1.25rem;
   background-color: var(--blue);
   padding: 10px;
   margin-bottom: 20px;
 }
 
 #chat-sidebar h3 {
+  font-weight: 600;
   margin-bottom: 15px;
 }
 
@@ -200,14 +202,14 @@ a {
 }
 
 .message .meta {
-  font-size: 15px;
-  font-weight: bold;
+  font-size: 0.9rem;
+  font-weight: 600;
   margin-bottom: 7px;
 }
 
 .message .meta span {
-  font-size: 12px;
-  font-weight: lighter;
+  font-size: 0.75rem;
+  font-weight: 300;
 }
 
 #chat-form-container {
@@ -222,13 +224,17 @@ a {
 }
 
 #chat-form-container input[type='text'] {
-  font-size: 16px;
+  font-size: 1rem;
   padding: 5px;
   height: 40px;
   width: 100%;
 }
 
 @media (max-width: 700px) {
+  body {
+    font-size: 14px;
+  }
+
   #chat-main {
     display: block;
   }
