@@ -239,5 +239,10 @@ a {
 
   .message {
     max-width: 90%;
+    padding: 7px 10px;
+  }
+
+  .message .meta {
+    margin-bottom: 3px;
   }
 }
