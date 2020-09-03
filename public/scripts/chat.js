@@ -11,9 +11,13 @@ const chatMessages = document.querySelector('#chat-messages');
 const chatForm = document.querySelector('#chat-form');
 
 // Store username and room from URL
-const { username, room } = Qs.parse(location.search, {
+let { username, room } = Qs.parse(location.search, {
   ignoreQueryPrefix: true,
 });
+
+// Trim whitespace from start and end
+username = username.trim();
+room = room.trim();
 
 // Set tab title to the room name
 document.title = room;
