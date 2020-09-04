@@ -27,12 +27,19 @@
           <!-- Username -->
           <div class="form-field">
             <label for="username">Username</label>
-            <input type="text" name="username" id="username" required />
+            <input
+              type="text"
+              name="username"
+              id="username"
+              minlength="2"
+              maxlength="32"
+              required
+            />
           </div>
           <!-- Room -->
           <div class="form-field">
             <label for="room">Room</label>
-            <input type="text" name="room" id="room" required />
+            <input type="text" name="room" id="room" maxlength="32" required />
           </div>
           <!-- Join room button -->
           <button type="submit" class="btn">Join room</button>
