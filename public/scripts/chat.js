@@ -64,6 +64,34 @@ chatForm.addEventListener('submit', (event) => {
   event.target.msg.focus();
 });
 
+// Create message meta element
+function createMeta(isSender, username, time) {
+  // Create a paragraph element
+  const metaElement = document.createElement('p');
+
+  // Add meta class to the element
+  metaElement.classList.add('meta');
+
+  // Add the sender and the time
+  metaElement.innerHTML = `${isSender ? 'You' : username} <span>${time}</span>`;
+
+  return metaElement;
+}
+
+// Create message text element
+function createText(text) {
+  // Create a paragraph element
+  const textElement = document.createElement('p');
+
+  // Add text class to the element
+  textElement.classList.add('text');
+
+  // Add the text to the element
+  textElement.innerText = text;
+
+  return textElement;
+}
+
 // Output new message to DOM
 function outputMessage({ username, text, time, isSender }) {
   // Create a container for the new message box
@@ -81,10 +109,11 @@ function outputMessage({ username, text, time, isSender }) {
   // Add message class to the message box
   messageBox.classList.add('message');
 
-  // Add message sender, time and text to the message box
-  messageBox.innerHTML = `
-  <p class="meta">${isSender ? 'You' : username} <span>${time}</span></p>
-  <p class="text">${text}</p>`;
+  // Add message sender and time to the message box
+  messageBox.appendChild(createMeta(isSender, username, time));
+
+  // Add message text to the message box
+  messageBox.appendChild(createText(text));
 
   // Append the message box to the message container
   messageContainer.appendChild(messageBox);
