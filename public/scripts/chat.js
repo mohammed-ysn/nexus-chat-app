@@ -127,13 +127,25 @@ function updateRoomName(room) {
   roomName.innerText = room;
 }
 
+// Create a list item with a username
+function createListItem(username) {
+  // Create list item element
+  const listItem = document.createElement('li');
+
+  // Set list item text to the username
+  listItem.innerText = username;
+
+  return listItem;
+}
+
 // Update list of room members on DOM
 function updateRoomUsers(users) {
-  // Iterate through the users in the room and output a list item with their name
-  usersList.innerHTML = `
-    ${users
-      .map((user) => {
-        return `<li>${user.username}</li>`;
-      })
-      .join('')}`;
+  // Clear users list
+  usersList.innerHTML = '';
+
+  // Iterate through the users in the room
+  users.forEach((user) => {
+    // Output a list item with the username
+    usersList.appendChild(createListItem(user.username));
+  });
 }
