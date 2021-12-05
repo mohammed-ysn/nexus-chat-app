@@ -1,6 +1,6 @@
 # Nexus Chat App
 
-A chat application built [Node.js](https://nodejs.org/) and [Express](https://expressjs.com/).
+A chat application built with [Node.js](https://nodejs.org/) and [Express](https://expressjs.com/).
 
 ## Installation
 
